@@ -24,10 +24,14 @@ class MainActivity : AppCompatActivity() {
         etName = findViewById(R.id.etNome)
 
         botaoMeAperte?.setOnClickListener {
-            contador++
-            Toast.makeText(this, "Ai que delícia!", Toast.LENGTH_LONG)
-                .show()
-            tvPrincipal?.text = etName?.text?.toString()
+
+            val texto = etName?.text
+            if(texto!!.isNotBlank()) {
+                contador++
+                Toast.makeText(this, "Ai que delícia!", Toast.LENGTH_LONG)
+                    .show()
+                tvPrincipal?.text = etName.text?.toString()
+            } else etName.error = "Digite algo válido!"
         }
     }
 }
